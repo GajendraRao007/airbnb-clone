@@ -2,22 +2,26 @@ import './App.css';
 import Navbar from './Navbar';
 import Hero from './hero';
 import Card from './card';
+import data from './data';
 
-function App() {
+export default function App() {
   // <Hero />
-  return (
-   <div>
-      <Navbar />
-      <Card 
-       img="katie-zaferes.png"
-       rating="5.0"
-       reviewCount={6}
-       country="USA"
-       title="Life Lessons with Katie Zaferes"
-       price={136}
-      />
-   </div>
-  )
-}
+const cards = data.map(item => {
+return (
+  <Card 
+  key={item.id}
+  item={item}
+  />
+)
+})        
 
-export default App;
+return (
+<div>
+  <Navbar />
+  <Hero />
+  <section className="cardslist">
+                {cards}
+            </section>
+</div>
+)
+}
